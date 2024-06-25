@@ -29,8 +29,9 @@ class Document(Serializable):
     """
     type: Literal["Document"] = "Document"
 
-    def __init__(self, page_content: str, **kwargs: Any) -> None:
+    def __init__(self, page_content: str, metadata: dict = None, **kwargs: Any) -> None:
         """Pass page_content in as positional or named arg."""
+        self.metadata = metadata if metadata is not None else {}
         super().__init__(page_content=page_content, **kwargs)
 
     @classmethod
